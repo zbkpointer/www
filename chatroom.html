@@ -1,0 +1,103 @@
+<!DOCUMENT HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>小区聊天室</title>
+<style>
+h1{
+	text-align:center;
+}
+#chatarea{
+	width:1200px;
+	height:800px;
+	margin:0 auto;
+	background-color:red;
+
+}
+#tableOfContents{
+
+	width:400px;
+	height:800px;
+	float:left;
+	background-color:blue;
+
+}
+#ChatBox{
+
+	width:800px;
+	height:500px;
+	float:left;
+	background-color:gray;
+
+}
+
+#InputBox{
+
+	width:800px;
+	height:300px;
+	float:left;
+	background-color:yellow;
+
+}
+#textinput{
+	display:block;
+	width:780px;
+	height:200px;
+	margin:0 auto;
+
+}
+#submitbutton{
+	display:block;
+	width:60px;
+	height:30px;
+	margin-top:10px;
+	margin-right:10px;
+    float:right;
+	background-color:white;
+
+}
+</style>
+
+</head>
+
+<body>
+<h1>欢迎来到小区聊天室</h1>
+<hr/>
+
+<div id="chatarea">
+	<div id="tableOfContents">
+	
+	</div>
+	
+	
+	<div id="ChatBox">
+	
+	
+	</div>
+	
+	<div id="InputBox">
+		<hr/>
+		<form >
+			<script>
+				function getTextArea(){
+				test = document.getElementById("textinput").value;
+				x=document.getElementById("ChatBox");
+				x.innerHTML=test;
+				}
+			</script>
+			<textarea id="textinput">
+			</textarea>
+			<input id="submitbutton" type="button" onclick="getTextArea()" value="发送">
+		</form>
+	
+	</div>
+
+</div>
+
+<?php
+
+
+?>
+</body>
+</html>
