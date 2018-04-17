@@ -4,9 +4,19 @@
 <head>
 <meta charset="utf-8">
 <title>小区聊天室</title>
+<link href="CSS/LeftQiPao.css" rel="stylesheet" type="text/css">
+<link href="CSS/RightQiPao.css" rel="stylesheet" type="text/css">
 <style>
 h1{
 	text-align:center;
+}
+#date{
+
+	font-size:16px;
+	height:16px;
+	line-height:16px;
+
+
 }
 #chatarea{
 	width:1200px;
@@ -15,6 +25,7 @@ h1{
 	background-color:red;
 
 }
+
 #tableOfContents{
 
 	width:400px;
@@ -23,11 +34,82 @@ h1{
 	background-color:blue;
 
 }
+
+ul{
+  margin:0;
+  padding:0;
+
+}
+li{
+list-style:none;
+}
+
+#list{
+
+	width:360px;
+	border:1px solid #333;
+	margin:20px  auto;
+	background-color:white;
+	padding-top:30px;
+	padding-bottom:20px;
+
+
+}
+
+.li h2{
+	height:30px;
+	line-height:30px;
+	text-indent:30px;
+	background:url(image/Dayu1.jpg) no-repeat 5px center;
+	background-size:20px 20px;
+	font-size:20px;
+
+	
+
+}
+
+.li .active{
+
+
+	height:30px;
+	line-height:30px;
+	text-indent:30px;
+	background:url(image/Dayu2.jpg) no-repeat 5px center;
+	background-size:20px 20px;
+	font-size:20px;
+
+
+
+}
+.li ul{
+
+	display:none;
+
+}
+
+
+.li ul li{
+	height:30px;
+	line-height:30px;
+	border-bottom:1px solid #333;
+	text-indent:30px;
+}
+
+
+#list ul .hover{
+	height:30px;
+	line-height:30px;
+	border-bottom:1px solid #333;
+	text-indent:30px;
+	background-color:red;
+}
 #ChatBox{
 
 	width:800px;
 	height:500px;
 	float:left;
+	overflow:scroll;
+	overflow-x: auto;
 	background-color:gray;
 
 }
@@ -56,16 +138,283 @@ h1{
 	background-color:white;
 
 }
+#switchImage{
+
+	display:block;
+	width:30px;
+	height:30px;
+	margin-top:10px;
+	margin-right:10px;
+    float:right;
+	background-image:url(image/biaoqing1.jpg);
+	background-repeat:no-repeat;
+	background-size:30px 30px;
+
+}
 </style>
+<script>
+
+	window.onload = function(){
+		var List = document.getElementById("list");
+		var oUl = List.getElementsByTagName("ul");
+		var oH2 = List.getElementsByTagName("h2");//数组
+		var onOff = true;
+		var oLi = null;
+		var arrLi =[];
+		var oDate =document.getElementById('date');
+		var timer = null;
+		var oTi=document.getElementById("textinput");
+		var oChatBox=document.getElementById("ChatBox");
+		var oBtn = document.getElementById("submitbutton");
+		var oBtnSwi = document.getElementById("switchImage");
+		var onOff_1 = true;
+		var image=['image/biaoqing1.jpg','image/biaoqing2.jpg'];
+
+		
+		getTime();
+		//获取时间
+		function getTime(){
+		
+		var str ='';
+		var oDay ='';
+		var myDate = new Date();
+		
+		var oYear = myDate.getFullYear();//获取完整的年份(4位,1970-????)
+		var oMonth= myDate.getMonth()+1; //获取当前月份(0-11,0代表1月)
+		var odate = myDate.getDate(); //获取当前日(1-31)
+		var oday = myDate.getDay(); //获取当前星期X(0-6,0代表星期天)
+		
+		var oHour = myDate.getHours(); //获取当前小时数(0-23)
+		var oMinute = myDate.getMinutes(); //获取当前分钟数(0-59)
+		var oSecond = myDate.getSeconds(); //获取当前秒数(0-59)
+		
+		
+		switch(oday){
+				case 0:
+				{
+					oDay = '日';
+					break;
+				}
+				case 1:
+				{
+					oDay = '一';
+					break;
+				}
+				case 2:
+				{
+					oDay = '二';
+					break;
+				}
+				case 3:
+				{
+					oDay = '三';
+					break;
+				}
+				case 4:
+				{
+					oDay = '四';
+					break;
+				}
+				case 5:
+				{
+					oDay = '五';
+					break;
+				}
+				case 6:
+				{
+					oDay = '六';
+					break;
+				}
+				default :
+					break;
+			
+		}
+		
+		
+		oSecond = oneToTwo(oSecond);
+		oMinute = oneToTwo(oMinute);
+		oHour   = oneToTwo(oHour);
+		
+		str ='现在是: '+oYear+'年'+oMonth+'月'+odate+'日 '+'星期'+oDay+' '+oHour+':'+oMinute+':'+oSecond;
+		
+		oDate.innerHTML=str;
+		}
+		
+		setInterval(getTime,1000);
+		
+		function oneToTwo(a){
+		
+			if( a < 10){
+			return '0'+a;
+			}else{
+			
+			return a;
+			}
+		
+		}
+		
+	
+	
+		
+		for(var i=0;i<oH2.length;i++){
+			
+			oH2[i].index=i;
+			oH2[i].onclick=function(){ 
+			
+			if(onOff){
+
+				oUl[this.index].style.display="block";
+				this.className = 'active';
+				onOff = false;
+			
+			}else{
+				oUl[this.index].style.display="none";
+				this.className = '';
+				onOff = true;
+			
+			}
+			}
+		}
+		
+		for(var i=0;i<oUl.length;i++){
+		
+			oLi=oUl[i].getElementsByTagName("li");
+			for(var j =0;j<oLi.length;j++){
+			arrLi.push(oLi[j]); 
+			}
+			
+		}
+	
+	
+		for(var i=0;i<arrLi.length;i++){
+		
+			arrLi[i].onclick=function(){
+			
+				for(var i=0;i<arrLi.length;i++){
+					
+					arrLi[i].className='';
+				}
+				this.className='hover';
+			
+			}
+		
+		}
+	
+	
+		oBtn.onclick=function(){
+			var test = oTi.value;
+			
+			//var str='<h2 style="background:url('+image[0]+')'+' '+'no-repeat 0 center white;font-size:16px;background-size:30px 30px;width:300px;height:30px;line-height:30px;text-indent:35px;margin-right:10px;float:right;">'+test+': '+'</h2>'+'<div style="clear:both;"></div>';
+			//var str1='<h2 style="background:url('+image[1]+')'+' '+'no-repeat 0 center white;font-size:16px;background-size:30px 30px;width:300px;height:30px;line-height:30px;text-indent:35px;">'+': '+test+'</h2>';
+			var str='<div class="leftQiPao"> <div class="photo" style="background-image: url('+image[0]+');'+'"></div><div class="head"><div class="message1"></div><div class="message2">'+test+'</div> </div> </div><br/>';
+            var str1='<div class="rightQiPao"> <div class="photo1" style="background-image: url('+image[1]+');'+'"></div><div class="head1"><div class="message11"></div><div class="message21">'+test+'</div> </div> </div><br/>';
+			//alert(str);
+			/*判断输入是否为空，为空不输出*/
+			if(test!="" && onOff_1)
+			{
+			oChatBox.innerHTML=oChatBox.innerHTML+str;
+			oChatBox.scrollTop=oChatBox.scrollHeight;
+			//oChatBox.innerHTML=oChatBox.innerHTML+"<img src="+image[0]+' '+"style='margin-left:10px; width:20px; height20px;'/>"+': '+test+'<br/>';
+			}else{
+			oChatBox.innerHTML=oChatBox.innerHTML+str1;
+			oChatBox.scrollTop=oChatBox.scrollHeight;
+			//oChatBox.innerHTML=oChatBox.innerHTML+"<img src="+image[1]+' '+"style='margin-left:10px; width:20px; height20px;'/>"+': '+test+'<br/>';
+			}
+		}
+		oBtnSwi.onclick=function(){
+			if(onOff_1){
+				this.style.backgroundImage='url('+image[1]+')';
+				onOff_1=false;
+			}else{
+				this.style.backgroundImage='url('+image[0]+')';
+				onOff_1=true;
+			}
+			
+		
+		}
+		//滚动条的鼠标事件
+		oChatBox.onmouseout = function () {
+
+		    this.style.overflow = 'hidden';
+
+		}
+		oChatBox.onmouseover = function (){
+
+            this.style.overflowY = 'scroll';
+		}
+	
+}
+</script>
 
 </head>
 
 <body>
 <h1>欢迎来到小区聊天室</h1>
+<h2 id="date">时间显示</h2>
 <hr/>
 
 <div id="chatarea">
 	<div id="tableOfContents">
+	
+		<ul id="list">
+			<li class="li">
+				
+				<h2>我的好友</h2>
+				<ul>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+			
+				
+				</ul>
+			</li>
+			<li class="li">
+				
+				<h2>我的关注</h2>
+				<ul>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+				</ul>
+			</li>
+			<li class="li">
+				<h2>我的家人</h2>
+				<ul>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+					
+				</ul>
+			</li>
+			
+			<li class="li">
+				<h2>我的同学</h2>
+				<ul>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+					
+				</ul>
+			</li>
+			<li class="li">
+				<h2>我的同事</h2>
+				<ul>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+					<li>你好</li>
+					
+				</ul>
+			</li>
+			
+		
+		
+		
+		</ul>
 	
 	</div>
 	
@@ -78,16 +427,10 @@ h1{
 	<div id="InputBox">
 		<hr/>
 		<form >
-			<script>
-				function getTextArea(){
-				test = document.getElementById("textinput").value;
-				x=document.getElementById("ChatBox");
-				x.innerHTML=test;
-				}
-			</script>
-			<textarea id="textinput">
-			</textarea>
-			<input id="submitbutton" type="button" onclick="getTextArea()" value="发送">
+			<!-- 之间不要空格，否则会出现鼠标不在第一列的问题    -->
+			<textarea id="textinput" cols="30"></textarea>
+			<input id="submitbutton" type="button" value="发送" >
+			<input id="switchImage" type="button"  >
 		</form>
 	
 	</div>

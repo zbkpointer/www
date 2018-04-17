@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变颜色</title>
+    <style>
+
+        #area{
+            width: 200px;
+            height: 200px;
+            float: left;
+            background-color: #d1d1d1;
+        }
+        #chosearea{
+            display: none;
+            width: 300px;
+            height: 220px;
+            float: left;
+            margin-left: 20px;
+            padding: 20px;
+            background-color: azure;
+        }
+        #div1{
+            width: 300px;
+            height: 220px;
+            padding: 20px;
+            background-color: beige;
+
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var area = document.getElementById("area");
+            document.getElementById("change").onclick=function () {
+                document.getElementById("chosearea").style.display="block";
+            };
+           //alert(area.width);
+            document.getElementById("btn_red").onclick=function () {
+                area.style.backgroundColor="red";
+            };
+            document.getElementById("btn_blue").onclick=function () {
+                area.style.backgroundColor="blue";
+            };
+            document.getElementById("btn_yellow").onclick=function () {
+                area.style.backgroundColor="yellow";
+            };
+            document.getElementById("btn_50").onclick=function () {
+                area.style.height="50px";
+            };
+            document.getElementById("btn_300").onclick=function () {
+                area.style.height="300px";
+            };
+            document.getElementById("btn_1000").onclick=function () {
+                area.style.height="1000px";
+            };
+            document.getElementById("btn_20").onclick=function () {
+                area.style.width="20px";
+            };
+            document.getElementById("btn_600").onclick=function () {
+                area.style.width="600px";
+            };
+            document.getElementById("btn_800").onclick=function () {
+                area.style.width="800px";
+            };
+            document.getElementById("btn_resume").onclick=function () {
+                area.style.width="200px";
+                area.style.height="200px";
+                area.style.backgroundColor="#d1d1d1";
+            };
+
+
+
+        }
+
+    </script>
+</head>
+<body>
+    <div >
+    <H1 id="change">点击改变颜色</H1>
+
+    <DIV id="area" width="">
+
+    </DIV>
+    <div id="chosearea">
+        <span style="display:block;float:left;line-height: 40px;font-size: 20px;">颜色:</span>
+        <input id="btn_red" type="button" style="background-color: red;width: 60px;height: 40px;margin-left: 10px;" value="红">
+        <input id="btn_blue" type="button" style="background-color: blue;width: 60px;height: 40px;margin-left: 10px;" value="蓝">
+        <input id="btn_yellow" type="button" style="background-color: yellow;width: 60px;height: 40px;margin-left: 10px;" value="黄"><br/><br/>
+        <span style="display:block;float:left;line-height: 40px;font-size: 20px;">高度:</span>
+        <input id="btn_50" type="button" style="background-color:white;width: 60px;height: 40px;margin-left: 10px;" value="50px">
+        <input  id="btn_300" type="button" style="background-color: white;width: 60px;height: 40px;margin-left: 10px;" value="300px">
+        <input  id="btn_1000" type="button" style="background-color: white;width: 60px;height: 40px;margin-left: 10px;" value="1000px"><br/><br/>
+        <span style="display:block;float:left;line-height: 40px;font-size: 20px;">宽度:</span>
+        <input  id="btn_20" type="button" style="background-color:white;width: 60px;height: 40px;margin-left: 10px;" value="20px">
+        <input id="btn_600"  type="button" style="background-color: white;width: 60px;height: 40px;margin-left: 10px;" value="600px">
+        <input id="btn_800" type="button" style="background-color: white;width: 60px;height: 40px;margin-left: 10px;" value="800px"><br/><br/>
+
+        <input id="btn_resume" type="button" style="background-color: white;width: 60px;height: 40px;margin-left: 80px;" value="恢复">
+        <input id="btn_ensure" type="button" style="background-color: white;width: 60px;height: 40px;margin-left: 20px;" value="确定">
+    </div>
+    </div>
+    <div id="div1" style="position: relative;top:500px;">
+    </div>
+    <br/>
+        <input type="text">
+        <input type="button" value="发送">
+
+
+
+
+</body>
+</html>
