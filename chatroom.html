@@ -32,6 +32,7 @@ h1{
 	height:800px;
 	float:left;
 	background-color:blue;
+	overflow-y: auto;
 
 }
 
@@ -307,7 +308,7 @@ list-style:none;
 			//var str='<h2 style="background:url('+image[0]+')'+' '+'no-repeat 0 center white;font-size:16px;background-size:30px 30px;width:300px;height:30px;line-height:30px;text-indent:35px;margin-right:10px;float:right;">'+test+': '+'</h2>'+'<div style="clear:both;"></div>';
 			//var str1='<h2 style="background:url('+image[1]+')'+' '+'no-repeat 0 center white;font-size:16px;background-size:30px 30px;width:300px;height:30px;line-height:30px;text-indent:35px;">'+': '+test+'</h2>';
 			var str='<div class="leftQiPao"> <div class="photo" style="background-image: url('+image[0]+');'+'"></div><div class="head"><div class="message1"></div><div class="message2">'+test+'</div> </div> </div><br/>';
-            var str1='<div class="rightQiPao"> <div class="photo1" style="background-image: url('+image[1]+');'+'"></div><div class="head1"><div class="message11"></div><div class="message21">'+test+'</div> </div> </div><br/>';
+            var str1='<div class="rightQiPao"> <div class="photo1" style="background-image: url('+image[1]+');'+'"></div><div class="head1"><div class="message11"></div><div class="message21">'+test+'</div></div> </div><br/>';
 			//alert(str);
 			/*判断输入是否为空，为空不输出*/
 			if(test!="" && onOff_1)
@@ -315,7 +316,8 @@ list-style:none;
 			oChatBox.innerHTML=oChatBox.innerHTML+str;
 			oChatBox.scrollTop=oChatBox.scrollHeight;//可以让消息显示到滚动条底部
 			//oChatBox.innerHTML=oChatBox.innerHTML+"<img src="+image[0]+' '+"style='margin-left:10px; width:20px; height20px;'/>"+': '+test+'<br/>';
-			}else{
+			}
+			if(test!="" && !onOff_1){
 			oChatBox.innerHTML=oChatBox.innerHTML+str1;
 			oChatBox.scrollTop=oChatBox.scrollHeight;
 			//oChatBox.innerHTML=oChatBox.innerHTML+"<img src="+image[1]+' '+"style='margin-left:10px; width:20px; height20px;'/>"+': '+test+'<br/>';
