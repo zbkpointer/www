@@ -1,0 +1,42 @@
+.rightQiPao{
+    margin-left: 500px;
+    position: relative;
+}
+
+.photo1{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: solid 1px #000;
+    left:245px;
+    background-size: 30px 30px;
+}
+
+.head1{
+    position: relative;
+    width: 230px;
+
+
+}
+
+.message11{
+    position: absolute;
+    width:  0px;
+    height: 0px;
+    top:3px;
+    left:228px;
+    border:solid 8px;
+    border-color:gray  gray gray yellow;
+}
+.message21{
+    position:relative;
+    padding: 2px 3px 2px 5px ;
+    text-indent: 2px;
+    top: -3px;
+   // display: inline-block;
+    line-height: 25px;
+    word-break: break-all;
+    background-color: yellow;
+    border-radius: 10px;
+
+}

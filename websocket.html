@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>websocket_test</title>
+</head>
+<body>
+    <div id="test">test websocket</div>
+</body>
+<script type="text/javascript">
+    // 绑定点击事件
+    document.getElementById("test").addEventListener('click', websocket_test);
+    // websocket测试函数
+    function websocket_test(){
+        // 创建websocket对象
+        var ws = new WebSocket("ws://localhost:8887");
+        // open事件
+        ws.onopen = function(){
+            // 发送消息
+            ws.send('hello!');
+            console.log('send hello');
+        }
+        // message事件
+        ws.onmessage = function(event){
+            console.log(event.data);
+            // 关闭连接
+            ws.close();
+        }
+        // close事件
+        ws.onclose(){
+            console.log('close');
+        }
+        // error事件
+        ws.onerror(){
+            console.log('error');
+        }
+    }
+</script>
+</html>
